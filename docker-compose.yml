@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+  metasploit:
+    build:
+      context: metasploit
+    image: ccc-metasploit:latest
+    depends_on:
+      - postgres
+  lab:
+    build:
+      context: lab
+    image: ccc-lab:latest
+    depends_on: 
+      - metasploit
